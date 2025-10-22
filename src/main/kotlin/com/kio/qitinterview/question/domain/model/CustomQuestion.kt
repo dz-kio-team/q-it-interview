@@ -3,7 +3,7 @@ package com.kio.qitinterview.question.domain.model
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "custom_questions")
+@Table(name = "custom_question")
 class CustomQuestion(
 
     @Id
@@ -12,5 +12,7 @@ class CustomQuestion(
 
     @Column(nullable = false)
     val question: String,
+
+
 ) {
 }
