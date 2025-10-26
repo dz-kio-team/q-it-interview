@@ -1,10 +1,9 @@
 package com.kio.qitinterview.question.application.service
 
-import com.kio.qitinterview.common.annotation.UseCase
+import com.kio.qit.annotation.UseCase
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateAiQuestionSuggestionRequest
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateCustomQuestionSuggestionRequest
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateExistingQuestionSuggestionRequest
-import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateAiQuestionSuggestionResponse
 import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateCustomQuestionSuggestionResponse
 import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateExistingQuestionSuggestionResponse
 import com.kio.qitinterview.question.application.port.`in`.QuestionService

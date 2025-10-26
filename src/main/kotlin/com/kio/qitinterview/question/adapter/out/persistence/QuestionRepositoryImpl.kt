@@ -1,6 +1,6 @@
 package com.kio.qitinterview.question.adapter.out.persistence
 
-import com.kio.qitinterview.common.annotation.PersistenceAdapter
+import com.kio.qit.annotation.PersistenceAdapter
 
 @PersistenceAdapter
 class QuestionRepositoryImpl(

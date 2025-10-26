@@ -1,6 +1,6 @@
 package com.kio.qitinterview.question.adapter.`in`.web.dto.request
 
-import com.kio.qitinterview.common.enum.InterviewType
+import com.kio.qit.enum.InterviewType
 
 data class CreateAiQuestionSuggestionRequest(
     val jobRole: String,

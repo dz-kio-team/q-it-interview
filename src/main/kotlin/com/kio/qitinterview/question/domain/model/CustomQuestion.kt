@@ -1,5 +1,6 @@
 package com.kio.qitinterview.question.domain.model
 
+import com.kio.qit.domain.model.BaseEntity
 import jakarta.persistence.*
 
 @Entity
@@ -13,6 +14,5 @@ class CustomQuestion(
     @Column(nullable = false)
     val question: String,
 
-
-) {
+    ) : BaseEntity() {
 }

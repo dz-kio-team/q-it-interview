@@ -1,15 +1,14 @@
 package com.kio.qitinterview.question.adapter.`in`.web
 
-import com.kio.qitinterview.common.annotation.WebAdapter
+//import org.springframework.security.core.annotation.AuthenticationPrincipal
+import com.kio.qit.annotation.WebAdapter
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateAiQuestionSuggestionRequest
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateCustomQuestionSuggestionRequest
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateExistingQuestionSuggestionRequest
-import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateAiQuestionSuggestionResponse
 import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateCustomQuestionSuggestionResponse
 import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateExistingQuestionSuggestionResponse
 import com.kio.qitinterview.question.application.port.`in`.QuestionService
 import org.springframework.http.ResponseEntity
-import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -27,7 +26,7 @@ class QuestionController(
      */
     @PostMapping("/custom")
     fun createCustomQuestion(
-        @AuthenticationPrincipal(expression = "username") userId : String,
+//        @AuthenticationPrincipal(expression = "username") userId : String,    // Security 적용 후 주석 해제
         @Validated @RequestBody request: CreateCustomQuestionSuggestionRequest
     ): ResponseEntity<CreateCustomQuestionSuggestionResponse> {
         return ResponseEntity.ok(questionService.createQuestion(request))
@@ -38,7 +37,7 @@ class QuestionController(
      */
     @PostMapping("/from-existing")
     fun createQuestionFromExisting(
-        @AuthenticationPrincipal(expression = "username") userId : String,
+//        @AuthenticationPrincipal(expression = "username") userId : String,
         @Validated @RequestBody request: CreateExistingQuestionSuggestionRequest
     ): ResponseEntity<CreateExistingQuestionSuggestionResponse>{
         return ResponseEntity.ok(questionService.createQuestionFromExisting(request))
@@ -49,7 +48,7 @@ class QuestionController(
      */
     @PostMapping("/ai")
     fun createQuestionUsingAI(
-        @AuthenticationPrincipal(expression = "username") userId : String,
+//        @AuthenticationPrincipal(expression = "username") userId : String,
         @Validated @RequestBody request: CreateAiQuestionSuggestionRequest
     ) {
         questionService.createQuestionUsingAI(request)

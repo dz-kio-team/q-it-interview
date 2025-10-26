@@ -1,7 +1,7 @@
 package com.kio.qitinterview.question.adapter.`in`.web.dto.response
 
-import com.kio.qitinterview.common.enum.InterviewType
-import com.kio.qitinterview.common.enum.QuestionGenerationType
+import com.kio.qit.enum.InterviewType
+import com.kio.qit.enum.QuestionGenerationType
 import java.time.LocalDateTime
 
 data class ResultExistingQuestionSuggestion(
