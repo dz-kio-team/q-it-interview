@@ -2,10 +2,11 @@ package com.kio.qitinterview.question.application.service
 
 import com.kio.qit.annotation.UseCase
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateAiQuestionSuggestionRequest
-import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateCustomQuestionSuggestionRequest
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateExistingQuestionSuggestionRequest
-import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateCustomQuestionSuggestionResponse
-import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateExistingQuestionSuggestionResponse
+import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateCustomQuestionSuggestionRequest
+import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateQuestionSuggestionResponse
+import com.kio.qitinterview.question.adapter.`in`.web.dto.response.ResultCustomQuestionSuggestion
+import com.kio.qitinterview.question.adapter.`in`.web.dto.response.ResultExistingQuestionSuggestion
 import com.kio.qitinterview.question.application.port.`in`.QuestionService
 import com.kio.qitinterview.question.application.port.out.QuestionRepository
 import com.kio.qitinterview.question.domain.service.QuestionDomainService
@@ -17,7 +18,7 @@ class QuestionServiceImpl(
     private val questionRepository: QuestionRepository,
     private val questionDomainService: QuestionDomainService
 ) : QuestionService {
-    override fun createQuestion(request: CreateCustomQuestionSuggestionRequest): CreateCustomQuestionSuggestionResponse {
+    override fun createQuestion(request: CreateCustomQuestionSuggestionRequest): CreateQuestionSuggestionResponse<ResultCustomQuestionSuggestion> {
         // 1. 사용자 검증
 
         // 2. CustomQuestion 생성
@@ -29,7 +30,7 @@ class QuestionServiceImpl(
         return null!!
     }
 
-    override fun createQuestionFromExisting(request: CreateExistingQuestionSuggestionRequest): CreateExistingQuestionSuggestionResponse {
+    override fun createQuestionFromExisting(request: CreateExistingQuestionSuggestionRequest): CreateQuestionSuggestionResponse<ResultExistingQuestionSuggestion> {
         // 1. 사용자 검증
 
         // 2. ReviewQuestion 목록 조회

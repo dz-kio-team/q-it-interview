@@ -7,4 +7,4 @@ data class CreateAiQuestionSuggestionRequest(
     val careerYears: Int,
     val companyName: String,
     val interviewType: InterviewType
-)
+) : QuestionSuggestionRequest

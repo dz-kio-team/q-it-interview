@@ -5,8 +5,9 @@ import com.kio.qit.annotation.WebAdapter
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateAiQuestionSuggestionRequest
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateCustomQuestionSuggestionRequest
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateExistingQuestionSuggestionRequest
-import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateCustomQuestionSuggestionResponse
-import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateExistingQuestionSuggestionResponse
+import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateQuestionSuggestionResponse
+import com.kio.qitinterview.question.adapter.`in`.web.dto.response.ResultCustomQuestionSuggestion
+import com.kio.qitinterview.question.adapter.`in`.web.dto.response.ResultExistingQuestionSuggestion
 import com.kio.qitinterview.question.application.port.`in`.QuestionService
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
@@ -28,7 +29,7 @@ class QuestionController(
     fun createCustomQuestion(
 //        @AuthenticationPrincipal(expression = "username") userId : String,    // Security 적용 후 주석 해제
         @Validated @RequestBody request: CreateCustomQuestionSuggestionRequest
-    ): ResponseEntity<CreateCustomQuestionSuggestionResponse> {
+    ): ResponseEntity<CreateQuestionSuggestionResponse<ResultCustomQuestionSuggestion>> {
         return ResponseEntity.ok(questionService.createQuestion(request))
     }
 
@@ -39,7 +40,7 @@ class QuestionController(
     fun createQuestionFromExisting(
 //        @AuthenticationPrincipal(expression = "username") userId : String,
         @Validated @RequestBody request: CreateExistingQuestionSuggestionRequest
-    ): ResponseEntity<CreateExistingQuestionSuggestionResponse>{
+    ): ResponseEntity<CreateQuestionSuggestionResponse<ResultExistingQuestionSuggestion>> {
         return ResponseEntity.ok(questionService.createQuestionFromExisting(request))
     }
 

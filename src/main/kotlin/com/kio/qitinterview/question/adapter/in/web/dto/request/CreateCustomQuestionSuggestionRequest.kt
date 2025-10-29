@@ -7,4 +7,4 @@ data class CreateCustomQuestionSuggestionRequest(
     val careerYears: Int,
     val customQuestion: String,
     val interviewType: InterviewType
-)
+) : QuestionSuggestionRequest
