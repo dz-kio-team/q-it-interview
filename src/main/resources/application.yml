@@ -19,6 +19,9 @@ spring:
       hibernate:
         format_sql: true
         use_sql_comments: true
+  mvc:
+    servlet:
+      path: /api/v1
 
 # Core Library Configuration 활성화 여부 설정
 qit:

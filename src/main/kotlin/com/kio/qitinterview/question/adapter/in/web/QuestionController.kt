@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @WebAdapter
 @RestController
-@RequestMapping("/api/v1/questions-suggestions")
+@RequestMapping("/questions-suggestions")
 class QuestionController(
     private val questionService: QuestionService
 ) {
