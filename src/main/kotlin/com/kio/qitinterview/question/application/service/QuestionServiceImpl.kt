@@ -7,14 +7,19 @@ import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateExisting
 import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateQuestionSuggestionResponse
 import com.kio.qitinterview.question.application.port.`in`.QuestionService
 import com.kio.qitinterview.question.application.port.out.QuestionRepository
+import com.kio.qitinterview.question.application.service.prompt.InterviewQuestionsResponse
+import com.kio.qitinterview.question.application.service.prompt.QuestionPromptBuilder
 import com.kio.qitinterview.question.domain.service.QuestionDomainService
+import com.kio.qitllmclient.client.ollama.OllamaClient
 import jakarta.transaction.Transactional
 
 @UseCase
 @Transactional
 class QuestionServiceImpl(
     private val questionRepository: QuestionRepository,
-    private val questionDomainService: QuestionDomainService
+    private val questionDomainService: QuestionDomainService,
+    private val ollamaClient: OllamaClient,
+    private val questionPromptBuilder: QuestionPromptBuilder
 ) : QuestionService {
     override fun createQuestion(request: CreateCustomQuestionSuggestionRequest): CreateQuestionSuggestionResponse {
         // 1. 사용자 검증
@@ -43,7 +48,14 @@ class QuestionServiceImpl(
     override fun createQuestionUsingAI(request: CreateAiQuestionSuggestionRequest) {
         // 1. 사용자 검증
 
-        // 2. AI를 활용한 질문 생성 (메시지 큐 이용)
+        // 2. AI를 활용한 질문 생성
+        val aiQuestionLlmRequest = questionPromptBuilder.buildAiQuestionLlmRequest(request)
+        val interviewQuestionsResponse =
+            ollamaClient.generate(aiQuestionLlmRequest, InterviewQuestionsResponse::class.java)
+
+        // 3. QuestionSuggestionResult 생성
+
+        // 4. 저장
 
     }
 }
