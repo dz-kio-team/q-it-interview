@@ -4,9 +4,9 @@ import com.kio.qit.enums.InterviewType
 import com.kio.qit.enums.QuestionGenerationType
 import java.time.LocalDateTime
 
-data class ResultQuestionSuggestion(
+data class QuestionSuggestionResult(
     val suggestionResultId: Long,
-    val sourceId: Long?, // AI, Custom에서는 null
+    val sourceId: Long? = null, // AI, Custom에서는 null
     val question: String,
     val jobRole: String,
     val careerYears: Int,

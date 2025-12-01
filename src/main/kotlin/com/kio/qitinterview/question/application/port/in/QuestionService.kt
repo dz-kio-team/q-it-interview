@@ -8,5 +8,5 @@ import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateQuestio
 interface QuestionService {
     fun createQuestion(request: CreateCustomQuestionSuggestionRequest): CreateQuestionSuggestionResponse
     fun createQuestionFromExisting(request: CreateExistingQuestionSuggestionRequest): CreateQuestionSuggestionResponse
-    fun createQuestionUsingAI(request: CreateAiQuestionSuggestionRequest)
+    fun createQuestionUsingAI(request: CreateAiQuestionSuggestionRequest): CreateQuestionSuggestionResponse
 }

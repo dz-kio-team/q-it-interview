@@ -49,7 +49,7 @@ class QuestionController(
     fun createQuestionUsingAI(
 //        @AuthenticationPrincipal(expression = "username") userId : String,
         @Validated @RequestBody request: CreateAiQuestionSuggestionRequest
-    ) {
-        questionService.createQuestionUsingAI(request)
+    ): ResponseEntity<CreateQuestionSuggestionResponse> {
+        return ResponseEntity.ok(questionService.createQuestionUsingAI(request))
     }
 }

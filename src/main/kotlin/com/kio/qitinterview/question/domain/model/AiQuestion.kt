@@ -10,7 +10,7 @@ class AiQuestion(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long? = null,
 
     @Column(nullable = false)
     val question: String,

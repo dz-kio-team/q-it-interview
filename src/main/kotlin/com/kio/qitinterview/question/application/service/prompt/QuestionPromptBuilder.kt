@@ -23,7 +23,12 @@ class QuestionPromptBuilder {
                             {
                               "question": "면접 질문 내용",
                               "keyPoint": "이 질문의 의도와 평가하고자 하는 핵심 포인트를 상세히 해설",
-                              "interviewType": "HardSkill"  // 또는 "SoftSkill"
+                              "interviewType": "Hard Skill"
+                            },
+                            {
+                              "question": "면접 질문 내용",
+                              "keyPoint": "이 질문의 의도와 평가하고자 하는 핵심 포인트를 상세히 해설",
+                              "interviewType": "Soft Skill"
                             }
                           ]
                         }
@@ -40,6 +45,10 @@ class QuestionPromptBuilder {
                         - 이 질문이 "무엇을" 평가하려는지 명확히 설명하세요.
                         - 어떤 개념, 기술, 경험을 확인하고자 하는지 구체적으로 서술하세요.
                         - 예상 답변에서 나와야 할 핵심 요소들을 포함하세요.
+                        
+                        **interviewType 작성 지침 (중요):**
+                        - 질문이 평가하고자 하는 면접 유형을 HARD_SKILL 또는 SOFT_SKILL 중 하나로 명확히 기재하세요.
+                        - ALL 또는 all과 같은 혼합형 표현은 사용하지 마세요.
 
                         예시:
                         - 나쁜 예: "트랜잭션 관리, 동시성 제어"
@@ -53,6 +62,8 @@ class QuestionPromptBuilder {
             prompt =
             """
                 다음 조건에 맞는 면접 질문을 생성해주세요:
+                요청 면접 유형에 맞는 질문을 생성해주세요. 면접 유형 값이 ALL인 겨우 HardSkill과 SoftSkill을 혼합하여 생성해주세요.
+                null 값이 들어오는 필드는 조건에서 제외해주세요.
 
                 - 직군: ${request.jobRole}
                 - 연차: ${request.careerYears}

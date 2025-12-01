@@ -43,9 +43,13 @@ dependencyManagement {
 
 dependencies {
     // Q-IT Core Library
-    implementation("com.github.dz-kio-team:q-it-core:main-SNAPSHOT")
+//    implementation("com.github.dz-kio-team:q-it-core:main-SNAPSHOT")
 //    implementation("com.github.dz-kio-team:q-it-llm-client:main-SNAPSHOT")
+    implementation(files("build/libs/q-it-core-unspecified.jar"))
     implementation(files("build/libs/q-it-llm-client-unspecified.jar"))
+
+    // Kotlin Logging
+    implementation("io.github.oshai:kotlin-logging-jvm:7.0.3")
 
     // Spring Boot
     implementation("org.springframework.boot:spring-boot-starter-actuator")
