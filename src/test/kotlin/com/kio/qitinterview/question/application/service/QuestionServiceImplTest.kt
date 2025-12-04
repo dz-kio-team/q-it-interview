@@ -19,7 +19,9 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.NullSource
+import org.junit.jupiter.params.provider.ValueSource
 
 @DisplayName("QuestionServiceImpl 단위 테스트")
 class QuestionServiceImplTest {
@@ -37,13 +39,15 @@ class QuestionServiceImplTest {
         aiQuestionRepository = aiQuestionRepository
     )
 
-    @Test
-    fun `AI를 활용한 질문 생성 - 성공`() {
+    @ParameterizedTest
+    @ValueSource(strings = ["더즌"])
+    @NullSource
+    fun `AI를 활용한 질문 생성 - 회사명 null 여부와 상관없이 질문 생성 성공`(companyName: String?) {
         // given
         val request = CreateAiQuestionSuggestionRequest(
             jobRole = "백엔드 개발자",
             careerYears = 3,
-            companyName = "더즌",
+            companyName = companyName,
             interviewType = InterviewType.HARD_SKILL
         )
         val llmRequest = mockk<LlmRequest>()
@@ -80,7 +84,7 @@ class QuestionServiceImplTest {
             { assertEquals(interviewQuestion.question, resultQuestion.question) },
             { assertEquals(request.jobRole, resultQuestion.jobRole) },
             { assertEquals(request.careerYears, resultQuestion.careerYears) },
-            { assertEquals(InterviewType.HARD_SKILL, resultQuestion.interviewType) },
+            { assertEquals(request.interviewType, resultQuestion.interviewType) },
             { assertEquals(QuestionGenerationType.AI, resultQuestion.questionGenerationType) },
             { verify(exactly = 1) { questionPromptBuilder.buildAiQuestionLlmRequest(any()) } },
             { verify(exactly = 1) { ollamaClient.generate(any(), InterviewQuestionsResponse::class.java) } },
