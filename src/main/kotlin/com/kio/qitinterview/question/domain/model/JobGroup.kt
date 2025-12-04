@@ -1,0 +1,28 @@
+package com.kio.qitinterview.question.domain.model
+
+import jakarta.persistence.*
+import org.hibernate.annotations.Comment
+import org.springframework.data.annotation.CreatedDate
+import java.time.LocalDateTime
+
+@Entity
+@Table(name = "job_group")
+class JobGroup(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
+
+    @Comment("직군 이름")
+    @Column(nullable = false, unique = true)
+    val name: String
+) {
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    var createdAt: LocalDateTime? = null
+        set(value) {
+            if (field != null) {
+                throw IllegalStateException("createdAt은 최초 생성 시에만 설정할 수 있습니다.")
+            }
+            field = value
+        }
+}
