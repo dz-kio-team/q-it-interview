@@ -6,7 +6,7 @@ import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateAiQuesti
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateCustomQuestionSuggestionRequest
 import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateExistingQuestionSuggestionRequest
 import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateQuestionSuggestionResponse
-import com.kio.qitinterview.question.adapter.`in`.web.dto.response.QuestionSuggestionResult
+import com.kio.qitinterview.question.adapter.`in`.web.dto.response.QuestionSuggestionResultDto
 import com.kio.qitinterview.question.application.port.`in`.QuestionService
 import com.kio.qitinterview.question.application.port.out.AiQuestionRepository
 import com.kio.qitinterview.question.application.port.out.QuestionRepository
