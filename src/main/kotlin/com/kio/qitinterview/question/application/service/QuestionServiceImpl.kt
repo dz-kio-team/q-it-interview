@@ -75,7 +75,7 @@ class QuestionServiceImpl(
             )
 
             // QuestionSuggestionResult 생성
-            QuestionSuggestionResult(
+            QuestionSuggestionResultDto(
                 suggestionResultId = savedAiQuestion.id ?: 0L,
                 question = interviewQuestion.question,
                 jobRole = request.jobRole,

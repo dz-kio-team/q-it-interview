@@ -4,7 +4,7 @@ import com.kio.qit.enums.InterviewType
 import com.kio.qit.enums.QuestionGenerationType
 import java.time.LocalDateTime
 
-data class QuestionSuggestionResult(
+data class QuestionSuggestionResultDto(
     val suggestionResultId: Long,
     val sourceId: Long? = null, // AI, Custom에서는 null
     val question: String,
