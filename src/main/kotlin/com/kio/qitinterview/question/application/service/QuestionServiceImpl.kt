@@ -8,11 +8,11 @@ import com.kio.qitinterview.question.adapter.`in`.web.dto.request.CreateExisting
 import com.kio.qitinterview.question.adapter.`in`.web.dto.response.CreateQuestionSuggestionResponse
 import com.kio.qitinterview.question.adapter.`in`.web.dto.response.QuestionSuggestionResultDto
 import com.kio.qitinterview.question.application.port.`in`.QuestionService
-import com.kio.qitinterview.question.application.port.out.AiQuestionRepository
 import com.kio.qitinterview.question.application.port.out.QuestionRepository
 import com.kio.qitinterview.question.application.service.prompt.InterviewQuestionsResponse
 import com.kio.qitinterview.question.application.service.prompt.QuestionPromptBuilder
 import com.kio.qitinterview.question.domain.model.AiQuestion
+import com.kio.qitinterview.question.domain.model.QuestionSuggestionRequest
 import com.kio.qitinterview.question.domain.service.QuestionDomainService
 import com.kio.qitllmclient.client.ollama.OllamaClient
 import jakarta.transaction.Transactional
@@ -25,7 +25,6 @@ class QuestionServiceImpl(
     private val questionDomainService: QuestionDomainService,
     private val ollamaClient: OllamaClient,
     private val questionPromptBuilder: QuestionPromptBuilder,
-    private val aiQuestionRepository: AiQuestionRepository
 ) : QuestionService {
     override fun createQuestion(request: CreateCustomQuestionSuggestionRequest): CreateQuestionSuggestionResponse {
         // 1. 사용자 검증
@@ -67,7 +66,7 @@ class QuestionServiceImpl(
         // 3. QuestionSuggestionResult 생성 및 AiQuestion 저장
         val questionSuggestionResults = questions.map { interviewQuestion ->
             // AiQuestion 저장
-            val savedAiQuestion = aiQuestionRepository.save(
+            val savedAiQuestion = questionRepository.save(
                 AiQuestion(
                     question = interviewQuestion.question,
                     description = interviewQuestion.keyPoint

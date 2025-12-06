@@ -16,7 +16,7 @@ class QuestionSuggestionRequest(
     val careerYears : Int,
 
     @Column(nullable = false)
-    val questionType : InterviewType,
+    val interviewType : InterviewType,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
