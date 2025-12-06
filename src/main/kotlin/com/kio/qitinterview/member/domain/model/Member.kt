@@ -1,4 +1,4 @@
-package com.kio.qitinterview.question.domain.model
+package com.kio.qitinterview.member.domain.model
 
 import jakarta.persistence.*
 

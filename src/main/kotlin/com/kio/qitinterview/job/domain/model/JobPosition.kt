@@ -1,4 +1,4 @@
-package com.kio.qitinterview.question.domain.model
+package com.kio.qitinterview.job.domain.model
 
 import jakarta.persistence.*
 import org.hibernate.annotations.Comment
@@ -6,16 +6,16 @@ import org.springframework.data.annotation.CreatedDate
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "job_group")
-class JobGroup(
+@Table(name = "job_position")
+class JobPosition(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    @Comment("직군 이름")
+    @Comment("직무명")
     @Column(nullable = false, unique = true)
     val name: String
-) {
+    ) {
     @CreatedDate
     @Column(nullable = false, updatable = false)
     var createdAt: LocalDateTime? = null

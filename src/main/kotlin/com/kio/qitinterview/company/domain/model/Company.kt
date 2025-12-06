@@ -1,4 +1,4 @@
-package com.kio.qitinterview.question.domain.model
+package com.kio.qitinterview.company.domain.model
 
 import com.kio.qit.converter.StringListConverter
 import jakarta.persistence.*

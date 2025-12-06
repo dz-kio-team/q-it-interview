@@ -1,6 +1,9 @@
 package com.kio.qitinterview.question.domain.model
 
 import com.kio.qit.enums.InterviewType
+import com.kio.qitinterview.company.domain.model.Company
+import com.kio.qitinterview.job.domain.model.JobPosition
+import com.kio.qitinterview.member.domain.model.Member
 import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
 import java.time.LocalDateTime
