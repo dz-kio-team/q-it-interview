@@ -4,9 +4,11 @@ import com.kio.qit.enums.QuestionGenerationType
 import jakarta.persistence.*
 import org.hibernate.annotations.Comment
 import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 
 @Entity
+@EntityListeners(AuditingEntityListener::class)
 @Table(name = "question_suggestion_result")
 class QuestionSuggestionResult(
     @Id

@@ -3,9 +3,11 @@ package com.kio.qitinterview.job.domain.model
 import jakarta.persistence.*
 import org.hibernate.annotations.Comment
 import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 
 @Entity
+@EntityListeners(AuditingEntityListener::class)
 @Table(name = "job_position")
 class JobPosition(
     @Id

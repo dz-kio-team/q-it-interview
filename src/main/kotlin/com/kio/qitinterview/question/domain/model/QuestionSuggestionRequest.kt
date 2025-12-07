@@ -6,9 +6,11 @@ import com.kio.qitinterview.job.domain.model.JobPosition
 import com.kio.qitinterview.member.domain.model.Member
 import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 
 @Entity
+@EntityListeners(AuditingEntityListener::class)
 @Table(name = "question_suggestion_request")
 class QuestionSuggestionRequest(
     @Id
