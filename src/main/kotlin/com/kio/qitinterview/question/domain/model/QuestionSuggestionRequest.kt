@@ -29,7 +29,7 @@ class QuestionSuggestionRequest(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
-    val company: Company,
+    val company: Company? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "job_position_id", nullable = false)
