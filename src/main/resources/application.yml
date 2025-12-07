@@ -22,6 +22,10 @@ spring:
   mvc:
     servlet:
       path: /api/v1
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:data.sql
 
   ai:
     ollama:
