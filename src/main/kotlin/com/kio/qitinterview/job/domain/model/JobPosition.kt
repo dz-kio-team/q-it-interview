@@ -16,7 +16,11 @@ class JobPosition(
 
     @Comment("직무명")
     @Column(nullable = false, unique = true)
-    val name: String
+    val name: String,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "job_group_id", nullable = false)
+    val jobGroup: JobGroup
     ) {
     @CreatedDate
     @Column(nullable = false, updatable = false)
