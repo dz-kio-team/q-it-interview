@@ -19,7 +19,8 @@ class QuestionDomainService {
         return inteviewQuestions.map { interviewQuestion ->
             AiQuestion(
                 question = interviewQuestion.question,
-                description = interviewQuestion.keyPoint
+                description = interviewQuestion.keyPoint,
+                interviewType = interviewQuestion.interviewType
             )
         }
     }
@@ -29,6 +30,7 @@ class QuestionDomainService {
      */
     fun createQuestionSuggestionAggreagte(
         interviewQuestions: List<InterviewQuestion>,
+        interviewTypes: List<InterviewType>,
         requestInterviewType: InterviewType,
         jobPosition: JobPosition,
         member: Member,
@@ -53,6 +55,7 @@ class QuestionDomainService {
                 sourceType = sourceType,
                 questionSnapshot = interviewQuestion.question,
                 descriptionSnapshot = interviewQuestion.keyPoint,
+                interviewType = interviewTypes[index],
                 suggestionRequest = questionSuggestionRequest
             )
         }

@@ -111,6 +111,7 @@ class QuestionServiceImpl(
         val questionSuggestionAggregate =
             questionDomainService.createQuestionSuggestionAggreagte(
                 interviewQuestions = interviewQuestions,
+                interviewTypes = aiQuestions.map { it.interviewType },
                 requestInterviewType = requestInterviewType,
                 jobPosition = jobPosition,
                 member = member,
@@ -135,7 +136,7 @@ class QuestionServiceImpl(
                     sourceId = result.sourceId,
                     jobRole = jobPosition.name,
                     careerYears = careerYears,
-                    interviewType = suggestionRequest.interviewType,
+                    interviewType = result.interviewType,
                     questionGenerationType = QuestionGenerationType.AI,
                     createdAt = result.createdAt!!
                 )

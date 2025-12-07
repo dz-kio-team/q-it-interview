@@ -1,6 +1,7 @@
 package com.kio.qitinterview.question.domain.model
 
 import com.kio.qit.domain.model.BaseEntity
+import com.kio.qit.enums.InterviewType
 import com.kio.qit.enums.QuestionGenerationType
 import jakarta.persistence.*
 
@@ -17,6 +18,9 @@ class AiQuestion(
 
     @Column(nullable = false)
     val description: String,
+
+    @Column(nullable = false)
+    val interviewType: InterviewType,
 
     @Column(nullable = false)
     val sourceType: QuestionGenerationType = QuestionGenerationType.AI,

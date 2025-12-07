@@ -1,5 +1,6 @@
 package com.kio.qitinterview.question.domain.model
 
+import com.kio.qit.enums.InterviewType
 import com.kio.qit.enums.QuestionGenerationType
 import jakarta.persistence.*
 import org.hibernate.annotations.Comment
@@ -30,6 +31,10 @@ class QuestionSuggestionResult(
     @Comment("질문 설명 복사본")
     @Column(nullable = false)
     val descriptionSnapshot: String? = null,
+
+    @Comment("면접 유형")
+    @Column(nullable = false)
+    val interviewType: InterviewType,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "suggestion_request_id", nullable = false)
