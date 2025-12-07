@@ -11,6 +11,7 @@ class JobRepositoryImpl(
     private val jpaJobGroupRepository: JpaJobGroupRepository
 ): JobRepository {
     override fun findJobPositionByName(name: String) = jpaJobPositionRepository.findByName(name)
+    override fun findJobGroupByName(name: String) = jpaJobGroupRepository.findByName(name)
     override fun saveJobPosition(jobPosition: JobPosition) = jpaJobPositionRepository.save(jobPosition)
     override fun saveJobGroup(jobGroup: JobGroup) = jpaJobGroupRepository.save(jobGroup)
 }

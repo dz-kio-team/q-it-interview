@@ -60,10 +60,14 @@ class QuestionServiceImpl(
 
     @Transactional
     override fun createQuestionUsingAI(request: CreateAiQuestionSuggestionRequest): CreateQuestionSuggestionResponse {
-        // 1. 사용자 검증
-        // TODO: JobPosition이 없을 때 예외를 발생할지 아니면 새로 생성할지 논의 필요
+        // 1. JobPosition, Member, Company 조회
+        // TODO: 임시 로직, JobPosition이 없을 때 예외를 발생할지 아니면 새로 생성할지 논의 필요
         val jobPosition = jobRepository.findJobPositionByName(request.jobRole)
-            ?: jobRepository.findJobPositionByName("백엔드 개발자")!!
+            ?: run {
+                val jobGroup = jobRepository.findJobGroupByName("기타")!!
+                val newJobPosition = JobPosition(name = request.jobRole, jobGroup = jobGroup)
+                jobRepository.saveJobPosition(newJobPosition)
+            }
 
         // TODO: 임시 회원, 추후 인증 도입 후 수정 필요
         val member = memberRepository.findById(1L)!!

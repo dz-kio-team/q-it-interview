@@ -1,6 +1,8 @@
 -- JobGroup 샘플 데이터
 INSERT INTO job_group (name, created_at) VALUES
 ('개발', NOW());
+INSERT INTO job_group (name, created_at) VALUES
+    ('기타', NOW());
 
 -- Company 샘플 데이터
 INSERT INTO company (name, aliases) VALUES
