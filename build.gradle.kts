@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
 plugins {
     kotlin("jvm") version "1.9.25"
     kotlin("plugin.spring") version "1.9.25"
@@ -30,9 +32,24 @@ repositories {
     }
 }
 
+val springAiVersion = "1.0.0"
+
+dependencyManagement {
+    imports {
+        mavenBom(SpringBootPlugin.BOM_COORDINATES)
+        mavenBom("org.springframework.ai:spring-ai-bom:$springAiVersion")
+    }
+}
+
 dependencies {
     // Q-IT Core Library
-    implementation("com.github.dz-kio-team:q-it-core:v0.1.0")
+//    implementation("com.github.dz-kio-team:q-it-core:main-SNAPSHOT")
+//    implementation("com.github.dz-kio-team:q-it-llm-client:main-SNAPSHOT")
+    implementation(files("build/libs/q-it-core-unspecified.jar"))
+    implementation(files("build/libs/q-it-llm-client-unspecified.jar"))
+
+    // Kotlin Logging
+    implementation("io.github.oshai:kotlin-logging-jvm:7.0.3")
 
     // Spring Boot
     implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -42,6 +59,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 //    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    // Spring AI
+    implementation("org.springframework.ai:spring-ai-starter-model-ollama")
 
     // jackson
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -56,6 +76,7 @@ dependencies {
     // Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testImplementation("io.mockk:mockk:1.13.13")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
